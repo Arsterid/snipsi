@@ -1,0 +1,91 @@
+type BrandProps = {
+  compact?: boolean;
+};
+
+export default function Brand({ compact = false }: BrandProps) {
+  return (
+    <span
+      className={`brand${compact ? "brand--compact" : ""}`}
+      aria-label={compact ? "SnipSI" : undefined}
+      role={compact ? "img" : undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="brand__icon"
+        viewBox="0 0 523 527"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <linearGradient
+            id="snipsi-mark-background"
+            x1="0"
+            y1="0"
+            x2="523"
+            y2="527"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#1B2432" />
+            <stop offset="1" stopColor="#0D121B" />
+          </linearGradient>
+        </defs>
+
+        <rect width="523" height="527" rx="58" fill="url(#snipsi-mark-background)" />
+
+        <g fill="#FAF8F2">
+          <path
+            d="M365 111
+            C350 101 335 96 320 97
+            C304 97 290 101 279 108
+            L127 241
+            L228 318
+            L260 290
+            L200 243
+            L198 238
+            L301 146
+            C314 136 334 136 347 150
+            C358 162 361 177 353 192
+            L338 208
+            L368 231
+            L387 213
+            C395 202 400 187 399 172
+            C399 148 386 125 365 111 Z"
+          />
+
+          <path
+            d="M120 357
+            C122 384 142 409 168 419
+            C189 427 216 422 235 414
+            L322 335
+            L290 309
+            L217 376
+            C207 385 192 386 179 380
+            C163 372 156 357 160 342
+            C162 333 168 325 176 319
+            L149 298
+            L132 315
+            C122 326 117 342 120 357 Z"
+          />
+        </g>
+
+        <path
+          d="M285 210
+            L255 235
+            L315 279
+            L293 307
+            L324 335
+            L384 285
+            L321 234
+            L301 217 Z"
+          fill="var(--snipsi-accent)"
+        />
+      </svg>
+
+      {!compact && (
+        <span className="brand__wordmark">
+          Snip<span className="brand__accent">SI</span>
+        </span>
+      )}
+    </span>
+  );
+}

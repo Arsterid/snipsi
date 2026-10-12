@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SnipSI
 
-## Getting Started
+**Same video. Cleaner link.**
 
-First, run the development server:
+SnipSI is a tiny, friendly tool that spots the extra `si` parameter in YouTube share links and helps remove it with a short, playful animation.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## What it does
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Accepts regular, unencoded YouTube URLs.
+- Removes the `si` query parameter while preserving other query parameters and their order.
+- Explains what the parameter is and why a cleaner link may be preferable.
+- Uses a magnifying glass and animated scissors to make the process memorable.
+- Automatically selects English or Russian based on the visitor's browser language preferences, with English as the fallback.
+- Runs entirely in the browser and requires no backend.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The exact purpose of YouTube's `si` parameter is not fully documented publicly. SnipSI does not make claims about tracking or security risks; it simply helps remove an additional sharing parameter when appropriate.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage
 
-## Learn More
+Append `#` followed by the original YouTube URL to the SnipSI website address.
 
-To learn more about Next.js, take a look at the following resources:
+Example:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`https://<owner>.github.io/snipsi/#https://youtu.be/VIDEO_ID?si=SHARE_ID&t=42`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Use the original URL as copied from YouTube. Do not encode it manually.
 
-## Deploy on Vercel
+The source URL is carried in the browser's URL fragment and processed client-side. URL fragments are not included in the HTTP request sent to GitHub Pages.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Development
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The project uses Next.js, React, TypeScript, Tailwind CSS v4, and Vitest.
+
+To start developing, open the repository in VS Code and reopen it in the Dev Container. Then run:
+
+- `npm ci` — install the locked dependencies.
+- `npm run dev` — start the development server.
+- `npm test` — run unit tests.
+- `npm run lint` — run ESLint.
+- `npm run typecheck` — check TypeScript types.
+- `npm run build` — create the static export in `out/`.
+
+## Deployment
+
+The site is deployed to GitHub Pages using GitHub Actions. Every push to `main` triggers linting, tests, type checking, a production build, and deployment of the static export.
+
+The repository must use GitHub Actions as its Pages publishing source. The expected project URL is `https://<owner>.github.io/snipsi/`.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
